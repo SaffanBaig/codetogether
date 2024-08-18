@@ -4,4 +4,3 @@ server/dist/
 client/build/
 server/.env
 client/.env
-client

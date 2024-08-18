@@ -2,7 +2,9 @@ import { ConnectedSocket, MessageBody, SubscribeMessage, WebSocketGateway } from
 import { Socket } from "socket.io";
 
 
-@WebSocketGateway()
+@WebSocketGateway({cors: {
+    origin: '*',
+}})
 export class CodeGateway {
     private dataObj: Record<string, any> = {};
     @SubscribeMessage('join-room')

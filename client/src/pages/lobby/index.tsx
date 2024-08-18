@@ -6,7 +6,7 @@ const Lobby = () => {
   return (
     <div className="h-screen flex flex-col items-center py-16  md:py-16 text-white">
       <div className="w-max px-2 py-4 md:py-8">
-        <h1 className="text-4xl md:text-8xl font-bold animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-1 text-white font-bold">
+        <h1 className="text-4xl md:text-8xl font-bold animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-white pr-1 text-orange font-bold">
           CODE TOGETHER
         </h1>
       </div>

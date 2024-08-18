@@ -9,6 +9,7 @@ module.exports = {
         orange: "orange",
         black: "black",
         'green': '#13ce66',
+        'red': 'red',
       },
       keyframes: {
         typing: {
@@ -32,7 +33,7 @@ module.exports = {
         }
       },
       animation: {
-        typing: "typing 2s steps(30) , blink .7s infinite"
+        typing: "typing 2s steps(30), blink .7s infinite"
       }
     },
   },

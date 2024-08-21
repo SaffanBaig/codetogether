@@ -44,10 +44,13 @@ const Editor = () => {
   const executeCode = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.post(`http://localhost:3001/execute`, {
-        code,
-        language_code: languageCode,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}execute`,
+        {
+          code,
+          language_code: languageCode,
+        }
+      );
 
       if (res.data) {
         if (res.data.type === "error") {

@@ -1,4 +1,0 @@
-[build]
-  base = "client"  # This is the directory where your client code is located
-  publish = "build"  # Adjust this path according to your build output
-  command = "npm run build"  # Your build command for the client

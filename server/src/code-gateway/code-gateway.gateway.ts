@@ -3,7 +3,9 @@ import { Socket } from "socket.io";
 
 
 @WebSocketGateway({cors: {
-    origin: '*',
+    origin: ['https://codetog.netlify.app'],
+    methods: ['GET', 'POST'],
+    credentials: true,
 }})
 export class CodeGateway {
     private dataObj: Record<string, any> = {};

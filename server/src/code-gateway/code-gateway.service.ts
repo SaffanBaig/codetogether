@@ -9,11 +9,13 @@ import { CodeGatewayDto } from './dto/CodeGateway.dto';
 export class CodeGatewayService {
     constructor(private readonly httpService: HttpService) {}
   async executeCode(data: CodeGatewayDto){
-    const credsUsed = await firstValueFrom(this.httpService.post(`${process.env.JDOODLE_URL}/credit-spent`,{
-        clientId: process.env.JDOODLE_CLIEN_ID,
+    try {
+      console.log("ID ", process.env.JDOODLE_CLIENT_ID)
+      const credsUsed = await firstValueFrom(this.httpService.post(`${process.env.JDOODLE_URL}/credit-spent`,{
+        clientId: process.env.JDOODLE_CLIENT_ID,
         clientSecret: process.env.JDOODLE_CLIENT_SECRET,
       } ).pipe(catchError((error: AxiosError) => {
-        console.log("error ", error)
+        console.log("creds used error ", error)
         throw error
       })));
     if (credsUsed?.data?.used > 18) {
@@ -28,15 +30,22 @@ export class CodeGatewayService {
         clientSecret: process.env.JDOODLE_CLIENT_SECRET,
       };
 
-    const resp = await firstValueFrom(this.httpService.post(`${process.env.JDOODLE_URL}/execute`,{
-        clientId: process.env.JDOODLE_CLIEN_ID,
-        clientSecret: process.env.JDOODLE_CLIENT_SECRET,
-      } ).pipe(catchError((error: AxiosError) => {
+    const resp = await firstValueFrom(this.httpService.post(`${process.env.JDOODLE_URL}/execute`,program ).pipe(catchError((error: AxiosError) => {
         console.log("error ", error)
         throw error
       })));
 
-    return resp?.data?.output
+    return {
+      type: "success",
+      data: resp?.data?.output
+    }
+    } catch(err) {
+      return {
+        type: "error",
+        message: "Unknown error occured"
+      }
+    }
+    
   }
 
 

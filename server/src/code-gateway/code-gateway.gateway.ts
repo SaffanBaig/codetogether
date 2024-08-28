@@ -3,7 +3,7 @@ import { Socket } from "socket.io";
 
 
 @WebSocketGateway({cors: {
-    origin: ['https://codetog.netlify.app'],
+    origin: ['https://codetog.netlify.app', 'http://localhost:3001', '*'],
     methods: ['GET', 'POST'],
     credentials: true,
 }})
